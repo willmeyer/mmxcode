@@ -1,0 +1,22 @@
+{ 
+    formats : [ 
+		{
+			name : "FLAC",
+			extensions : [
+				"flac"
+			]
+		},
+		{
+			name : "AAC",
+			extensions : [
+				"m4a"
+			]
+		},
+		{
+			name : "MP3",
+			extensions : [
+				"mp3"
+			]
+		}
+	]
+}

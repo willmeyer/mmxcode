@@ -1,0 +1,26 @@
+{ 
+    name: "Default rules for a many-to-mp3 mirror",
+    rules : [ 
+		{
+			source : "flac",
+			mapper : "TRANSCODE",
+			dest : "mp3"
+		},
+		{
+			source : "aac",
+			mapper : "TRANSCODE",
+			dest : "mp3"
+		},
+		{
+			source : "mp3",
+			mapper : "COPY",
+			dest : "mp3"
+		}
+	],
+	blackList : {
+		names : [
+			".svn",
+			".DS_Store"
+		]
+	}
+}

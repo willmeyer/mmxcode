@@ -1,0 +1,101 @@
+{
+    encoders: [
+        {
+            platform: "osx",
+            format: "mp3",
+            command: "/usr/local/bin/lame --silent --preset standard {INFILE} {OUTFILE}" 
+        },
+        {
+            platform: "win",
+            format: "mp3",
+            command: "c:\\Progra~1\\lame\\lame.exe --silent --preset standard {INFILE} {OUTFILE}" 
+        }
+    ],
+
+    decoders: [
+        {
+            platform: "osx",
+            format: "flac",
+            command: "/usr/local/bin/flac -f -d {INFILE} -o {OUTFILE}" 
+        },
+        {
+            platform: "win",
+            format: "flac",
+            command: "c:\\Progra~1\\flac\\bin\\flac.exe -f -d {INFILE} -o {OUTFILE}" 
+        },
+        {
+            platform: "win",
+            format: "aac",
+            command: "c:\\Progra~1\\faad\\faad.exe -o {OUTFILE} {INFILE}" 
+        },
+        {
+            platform: "osx",
+            format: "aac",
+            command: "/opt/local/bin/faad -o {OUTFILE} {INFILE}" 
+        }
+    ],
+
+    tagGetters: [
+        {
+            platform: "osx",
+            format: "flac",
+            command: "/usr/local/bin/metaflac --block-type=VORBIS_COMMENT --list {INFILE}",
+            matcher: {
+            	trackTitle: "TITLE=(.*)",
+            	trackNum: "TRACKNUMBER=(.*)",
+            	album: "ALBUM=(.*)",
+            	artist: "ARTIST=(.*)",
+            	genre: "GENRE=(.*)",
+            	year: "DATE=(.*)"
+            },
+            checkExitCode: false 
+        },
+        {
+            platform: "win",
+            format: "flac",
+            command: "c:\\Progra~1\\flac\\bin\\metaflac.exe --block-type=VORBIS_COMMENT --list {INFILE}",
+            matcher: {
+            	trackTitle: "TITLE=(.*)",
+            	trackNum: "TRACKNUMBER=(.*)",
+            	album: "ALBUM=(.*)",
+            	artist: "ARTIST=(.*)",
+            	genre: "GENRE=(.*)",
+            	year: "DATE=(.*)"
+            } 
+        },
+        {
+            platform: "win",
+            format: "aac",
+            command: "c:\\Progra~1\\faad\\faad.exe -i {INFILE}",
+            matcher: {
+            	trackTitle: "title: (.*)",
+            	trackNum: "track: (.*)",
+            	album: "album: (.*)",
+            	artist: "artist: (.*)",
+            	genre: "genre: (.*)",
+            	year: "date: (.*)"
+            } 
+        },
+        {
+            platform: "osx",
+            format: "aac",
+            command: "/opt/local/bin/faad -i {INFILE}",
+            matcher: {
+            	trackTitle: "title: (.*)",
+            	trackNum: "track: (.*)",
+            	album: "album: (.*)",
+            	artist: "artist: (.*)",
+            	genre: "genre: (.*)",
+            	year: "date: (.*)"
+            } 
+        }
+    ],
+    
+    tagSetters: [
+        {
+            platform: "osx",
+            format: "flac",
+            command: "TODO" 
+        }
+    ]
+}
